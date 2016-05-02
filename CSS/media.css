@@ -21,6 +21,7 @@
 	#overlay p {
 		color: white;
 		text-align: center;
+		max-width: 300px;
 	}
 
 
@@ -62,9 +63,6 @@
 
 	/*** GALLERY ***/
 
-
-	
-
 	#gallery {
 		margin: auto;
 		padding: 0;
@@ -89,6 +87,7 @@
 	#overlay p {
 		color: white;
 		text-align: center;
+		max-width: 500px;
 	}
 
 
@@ -138,8 +137,6 @@
 	/*** GALLERY ***/
 
 
-	
-
 	#gallery {
 		max-width: 980px;
 		margin: auto;
@@ -153,7 +150,7 @@
 	#gallery li:nth-child(4n+1) {
 		padding-left: 0;
 	}
-
+	
 
 	ul li {
 		padding: 27px;
@@ -171,6 +168,8 @@
 	#overlay p {
 		color: white;
 		text-align: center;
+		max-width: 600px;
+
 	}
 
 	/*** NAVIGATION ARROWS ***/

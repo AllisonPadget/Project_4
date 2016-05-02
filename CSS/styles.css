@@ -15,16 +15,14 @@ body {
 
 
 .search {
-	/*margin-top: 20px;*/
 	text-align: center;
-
 	position: fixed;
 	z-index: 100;
 	top: 0;
 	width: 100%;
 	background-color: white;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 }
 
 .container{
@@ -52,6 +50,7 @@ input[type="text"] {
 
 /*** GALLERY ***/
 
+
 #gallery {
 	padding: 0;
 }
@@ -77,6 +76,7 @@ ul li {
 }
 
 
+
 /*** OVERLAY ***/
 
 #overlay {
@@ -100,6 +100,8 @@ ul li {
 #overlay p {
 	color: white;
 	text-align: center;
+	width: 60%;
+	margin: 0 auto;
 }
 
 
@@ -112,7 +114,6 @@ ul li {
 	position: relative;
 	background-color: rgba(0,0,0, 0.0);
 	border: none;
-
 }
 
 
@@ -137,8 +138,6 @@ ul li {
 	left: 184px;
 	top: -400px;
 }
-
-
 
 
 #leftArrow:focus,

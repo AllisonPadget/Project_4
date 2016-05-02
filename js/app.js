@@ -1,4 +1,5 @@
-/************* SEARCH **************/
+/************* REAL TIME SEARCH **************/
+
 var $search = $('input');
 
 $search.keyup(function(){
@@ -41,11 +42,20 @@ $('#gallery a').click(function( event ){
   $overlay.show();
   
   //get child's alt attribute and set caption
-  var captionText = $(this).children('img').attr('caption');
+  var captionText = $(this).children('img').attr('title');
   $caption.text(captionText);
   
 });
 
+
+/************** YouTube VIDEO **************/
+
+// var $video = $('<iframe frameborder="0" allowfullscreen> </iframe>');
+// $overlay.append($video);
+
+
+
+/***  https://youtu.be/_zR6ROjoOX0 ***/
 
 
 
@@ -83,7 +93,7 @@ function nextImage() {
     var nextImage = $('#gallery li').get($index).getElementsByTagName('a');
     /* get new image location and caption */
     var imageLocation = $(nextImage).attr('href');
-    var imageCaption =  $(nextImage).children('img').attr('caption');
+    var imageCaption =  $(nextImage).children('img').attr('title');
     /* update overlay image */
     updateImage(imageLocation, imageCaption);
 }
@@ -106,7 +116,7 @@ function prevImage() {
     var prevImage = $('#gallery li').get($index).getElementsByTagName('a');
     /* update the image location and caption */
     var imageLocation = $(prevImage).attr('href');
-    var imageCaption =  $(prevImage).children('img').attr('caption');
+    var imageCaption =  $(prevImage).children('img').attr('title');
     /* update overlay */
     updateImage(imageLocation, imageCaption);
 }
@@ -116,7 +126,7 @@ function prevImage() {
 
 /*** click EXIT to hide ***/
 $exit.click(function(){
-  $overlay.fadeOut(1500);
+  $overlay.fadeOut(1000);
 });
 
 
@@ -129,15 +139,10 @@ $('body').keyup( function(e){
   } else if (e.which == 39){
     nextImage();
   } else if (e.which == 32 || e.which == 27){
-    $('#overlay').fadeOut();
+    $('#overlay').fadeOut(1000);
   }
 });
 
-/************** YouTube VIDEO **************/
-
-var $video = $('<iframe> </iframe>');
-
-/***  https://youtu.be/_zR6ROjoOX0 ***/
 
 
 
