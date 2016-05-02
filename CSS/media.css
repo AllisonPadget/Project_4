@@ -1,27 +1,202 @@
 /**********************************
 		|  ** ** ** ** ** ** ** **
 		|         * * *
-		|    MEDIA QUERY 
+		|    MEDIA QUERY 500px
 		|         * * *
 	 \ /  ** ** ** ** ** ** ** **
 		\/
 *************************************/
 
-/*@media  screen and (min-width: px) {
+@media only screen and (min-width: 500px) {
 
+	/*** OVERLAY ***/
+
+
+	#overlay img {
+		margin-top: 40%;
+		height: 400px;
+		width: 400px;
+	}
+
+	#overlay p {
+		color: white;
+		text-align: center;
+	}
+
+
+	/*** NAVIGATION ARROWS ***/
+	#leftArrow {
+		top: -300px;
+		left: -236px;	
+	}
+
+	#rightArrow {
+		top: -300px;
+		right: -206px;
+	}
+
+	#exit {
+		font-size: 25px;
+		cursor: pointer;
+		position: relative;
+		left: 260px;
+		top: -506px;
+	}
+
+	
+	
 }
-*/
 
 
 /**********************************
 		|  ** ** ** ** ** ** ** **
 		|         * * *
-		|    MEDIA QUERY 
+		|    MEDIA QUERY 768px
 		|         * * *
 	 \ /  ** ** ** ** ** ** ** **
 		\/
 *************************************/
 
-/*@media  screen and (min-width: px) {
+@media only screen and (min-width: 768px) {
 
-}*/
+
+	/*** GALLERY ***/
+
+
+	
+
+	#gallery {
+		margin: auto;
+		padding: 0;
+	}
+
+
+
+	ul li {
+		padding: 20px;
+	}
+
+
+	/*** OVERLAY ***/
+
+
+	#overlay img {
+		margin-top: 20%;
+		height: 500px;
+		width: 650px;
+	}
+
+	#overlay p {
+		color: white;
+		text-align: center;
+	}
+
+
+
+	/*** NAVIGATION ARROWS ***/
+
+	#leftArrow {
+		top: -325px;
+		left: -365px;
+	}
+
+	#rightArrow {
+		top: -325px;
+		right: -330px;
+	}
+
+	#exit {
+		font-size: 30px;
+		cursor: pointer;
+		position: relative;
+		left: 385px;
+		top: -605px;
+	}
+
+}
+
+
+
+/**********************************
+		|  ** ** ** ** ** ** ** **
+		|         * * *
+		|    MEDIA QUERY 1024px
+		|         * * *
+	 \ /  ** ** ** ** ** ** ** **
+		\/
+*************************************/
+
+@media only screen and (min-width: 1024px) {
+
+
+	/**** SEARCH BOX ****/
+
+	input[type="text"] {
+		width: 460px;
+	}
+
+	/*** GALLERY ***/
+
+
+	
+
+	#gallery {
+		max-width: 980px;
+		margin: auto;
+		padding: 0;
+	}
+
+	#gallery li:nth-child(4n+4) {
+		padding-right: 0;
+	}
+
+	#gallery li:nth-child(4n+1) {
+		padding-left: 0;
+	}
+
+
+	ul li {
+		padding: 27px;
+	}
+
+
+	/*** OVERLAY ***/
+
+	#overlay img {
+		margin-top: 10%;
+		height: 600px;
+		width: 850px;
+	}
+
+	#overlay p {
+		color: white;
+		text-align: center;
+	}
+
+	/*** NAVIGATION ARROWS ***/
+
+	#leftArrow, #rightArrow {
+	font-size: 40px;
+}
+
+
+	#leftArrow {
+		top: -400px;
+		left: -470px;
+	}
+
+	#rightArrow {
+		top: -400px;
+		right: -425px;
+	}
+
+	#exit {
+		font-size: 40px;
+		cursor: pointer;
+		position: relative;
+		left: 490px;
+		top: -715px;
+	}
+
+
+}

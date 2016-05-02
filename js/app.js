@@ -1,16 +1,18 @@
 /************* SEARCH **************/
-// var x = document.getElementByID('search');
+var $search = $('input');
 
-
-
-
-
-
-
-
-
-
-
+$search.keyup(function(){
+  var userInput = $(this).val().toLowerCase();
+  $('#gallery img').each(function(){
+    var alt = $(this).attr('alt').toLowerCase();
+    if(alt.search(userInput) > -1){
+      $(this).parent().fadeIn();
+    } else {
+      $(this).parent().fadeOut();
+    }
+  });
+});
+  
 
 /************* OVERLAY **************/
 
@@ -45,14 +47,97 @@ $('#gallery a').click(function( event ){
 });
 
 
-//click to hide
-$overlay.click(function(){
-  $overlay.hide();
+
+
+
+
+/************* ARROW PHOTO NAV **************/
+
+var $leftArrow = $('<button id="leftArrow"> &#x276E; </button>');
+var $rightArrow = $('<button id="rightArrow"> &#x276F; </button>');
+var $exit = $('<button id="exit"> &#x2715; </button>');
+
+$overlay.append($exit);
+$overlay.append($leftArrow);
+$overlay.append($rightArrow);
+
+
+var $index = 0;
+
+
+$leftArrow.on('click', function(event){
+  prevImage();
+});
+
+$rightArrow.on('click', function(event){
+  nextImage();
+});
+
+function nextImage() {
+  $index++;
+  /* loop up to first image in gallery */
+  if ($index >= $('#gallery li').length) {
+      $index = 0;
+    }
+    /* use index to get next image */
+    var nextImage = $('#gallery li').get($index).getElementsByTagName('a');
+    /* get new image location and caption */
+    var imageLocation = $(nextImage).attr('href');
+    var imageCaption =  $(nextImage).children('img').attr('caption');
+    /* update overlay image */
+    updateImage(imageLocation, imageCaption);
+}
+
+function updateImage(imageLocation, imageCaption) {
+    /* update image source */
+    $image.attr("src", imageLocation);
+    /* set caption text */
+    $caption.text(imageCaption);
+}
+
+function prevImage() {
+    /* update the index */
+    $index--;
+    /* loop back to last image in gallery */
+    if ($index < 0) {
+        $index = $('#gallery li').length - 1;
+    }
+    /* get the previous image by index */
+    var prevImage = $('#gallery li').get($index).getElementsByTagName('a');
+    /* update the image location and caption */
+    var imageLocation = $(prevImage).attr('href');
+    var imageCaption =  $(prevImage).children('img').attr('caption');
+    /* update overlay */
+    updateImage(imageLocation, imageCaption);
+}
+
+
+
+
+/*** click EXIT to hide ***/
+$exit.click(function(){
+  $overlay.fadeOut(1500);
 });
 
 
 
+/************** KEYBOARD NAVIGATION **************/
 
+$('body').keyup( function(e){
+  if(e.which == 37){
+    prevImage();
+  } else if (e.which == 39){
+    nextImage();
+  } else if (e.which == 32 || e.which == 27){
+    $('#overlay').fadeOut();
+  }
+});
+
+/************** YouTube VIDEO **************/
+
+var $video = $('<iframe> </iframe>');
+
+/***  https://youtu.be/_zR6ROjoOX0 ***/
 
 
 

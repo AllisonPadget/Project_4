@@ -3,7 +3,8 @@
 body {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 200;
-	line-height: 1.5;
+	/*line-height: 1.5;*/
+	margin: 0;
 }
 
 * {
@@ -12,64 +13,78 @@ body {
 
 /**** SEARCH BOX ****/
 
+
 .search {
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 	text-align: center;
+
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	width: 100%;
+	background-color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.container{
+ 	margin-top: 75px;
+ }
+
+input:hover {
+	background-color: #f4f4f4;
 }
 
 input[type="text"] {
-	width: 460px;
+	width: 350px;
 	height: 50px;
 	padding-left: 10px;
 	font-size: 16px;
 	border: 2px solid #E5E5E5;	
 	border-radius: 5px;
-
 }
 
  input:focus {
  	outline: 0;
  }
 
- /******* FLEXBOX *******/
 
-.flex {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	max-width: 980px;
-	margin: 0 auto;
+
+/*** GALLERY ***/
+
+#gallery {
+	padding: 0;
 }
 
-.item {
-	display: inline-flex;
+
+ul li img {
+	display: block;
 }
 
- /*** GALLERY ***/
+a {
+	text-decoration: none;
+}
+
 
 ul {
 	list-style: none;
 	text-align: center;
-	padding: 0;
 }
 
 ul li {
-	/*display: inline-block;*/
-	height: 200px;
+	display: inline-block;
+	padding: 10px;
 }
-
-
 
 
 /*** OVERLAY ***/
 
 #overlay {
+	z-index: 1000;
 	background: rgba(0,0,0, 0.7);
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	display: none;
@@ -77,9 +92,9 @@ ul li {
 }
 
 #overlay img {
-	margin-top: 10%;
-	height: 600px;
-	width: 1000px;
+	margin-top: 40%;
+	height: 300px;
+	width: 300px;
 }
 
 #overlay p {
@@ -88,8 +103,48 @@ ul li {
 }
 
 
+/*** ARROWS and EXIT BUTTONS ***/
+
+#leftArrow, #rightArrow {
+	font-size: 20px;
+	color: white;
+	cursor: pointer;
+	position: relative;
+	background-color: rgba(0,0,0, 0.0);
+	border: none;
+
+}
 
 
+#leftArrow {
+	top: -225px;
+	left: -185px;	
+}
+
+#rightArrow {
+	top: -225px;
+	right: -160px;
+}
+
+#exit {
+	color: white;
+	font-size: 15px;
+	cursor: pointer;
+	background-color: rgba(0,0,0, 0.0);
+	border: none;
+
+	position: relative;
+	left: 184px;
+	top: -400px;
+}
+
+
+
+
+#leftArrow:focus,
+#rightArrow:focus {
+	outline: 0;
+}
 
 
 
