@@ -138,17 +138,9 @@
 
 
 	#gallery {
-		max-width: 980px;
+		max-width: 1029px;
 		margin: auto;
 		padding: 0;
-	}
-
-	#gallery li:nth-child(4n+4) {
-		padding-right: 0;
-	}
-
-	#gallery li:nth-child(4n+1) {
-		padding-left: 0;
 	}
 	
 

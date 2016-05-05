@@ -5,11 +5,11 @@ var $search = $('input');
 $search.keyup(function(){
   var userInput = $(this).val().toLowerCase();
   $('#gallery img').each(function(){
-    var alt = $(this).attr('alt').toLowerCase();
-    if(alt.search(userInput) > -1){
-      $(this).parent().fadeIn();
+    var altText = $(this).attr('alt').toLowerCase();
+    if(altText.search(userInput) > -1){
+      $(this).parent().parent().fadeIn();
     } else {
-      $(this).parent().fadeOut();
+      $(this).parent().parent().fadeOut();
     }
   });
 });
@@ -25,6 +25,10 @@ var $caption = $('<p></p>');
 //add an image to overlay
 $overlay.append($image);
 
+var $video = $('<iframe id="player" type="text/html" width="560" height="315" src="" frameborder="0"></iframe>');
+$video.hide();
+$overlay.append($video);
+
 //add caption to overlay
 $overlay.append($caption);
 
@@ -34,9 +38,20 @@ $('body').append($overlay);
 //click on thumbnail
 $('#gallery a').click(function( event ){
   event.preventDefault();
-  var imageLocation = $(this).attr('href');
-  //update overlay with image linked in the clicked
-  $image.attr('src', imageLocation);
+
+  var href = $(this).attr('href');
+
+  if ($(this).hasClass('photo')) {
+    $video.hide();
+    //update overlay with image linked in the clicked
+    $image.attr('src', href);
+  }
+
+  if ($(this).hasClass('video')) {
+    $image.hide();
+    $video.show();
+    $video.attr('src', href.replace('https://youtu.be', 'http://www.youtube.com/embed'));
+  }
   
   //show overlay
   $overlay.show();
@@ -44,7 +59,6 @@ $('#gallery a').click(function( event ){
   //get child's alt attribute and set caption
   var captionText = $(this).children('img').attr('title');
   $caption.text(captionText);
-  
 });
 
 
