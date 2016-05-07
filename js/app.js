@@ -25,7 +25,7 @@ var $caption = $('<p></p>');
 //add an image to overlay
 $overlay.append($image);
 
-var $video = $('<iframe id="player" type="text/html" width="560" height="315" src="" frameborder="0"></iframe>');
+var $video = $('<iframe id="player" type="text/html" src="" frameborder="0"></iframe>');
 $video.hide();
 $overlay.append($video);
 
@@ -115,9 +115,18 @@ function nextImage() {
 function updateImage(imageLocation, imageCaption) {
     /* update image source */
     $image.attr("src", imageLocation);
+    // $video.attr('src', imageLocation);
+
     /* set caption text */
     $caption.text(imageCaption);
 }
+// function updateImage(imageLocation, imageCaption) {
+//     /* update video source */
+//     $video.attr("src", imageLocation);
+
+//     /* set caption text */
+//     $caption.text(imageCaption);
+// }
 
 function prevImage() {
     /* update the index */

@@ -12,7 +12,8 @@
 	/*** OVERLAY ***/
 
 
-	#overlay img {
+	#overlay img,
+	#player {
 		margin-top: 40%;
 		height: 400px;
 		width: 400px;
@@ -23,6 +24,8 @@
 		text-align: center;
 		max-width: 300px;
 	}
+
+
 
 
 	/*** NAVIGATION ARROWS ***/
@@ -40,8 +43,8 @@
 		font-size: 25px;
 		cursor: pointer;
 		position: relative;
-		left: 260px;
-		top: -506px;
+		left: 236px;
+		top: -455px;
 	}
 
 	
@@ -78,7 +81,8 @@
 	/*** OVERLAY ***/
 
 
-	#overlay img {
+	#overlay img,
+	#player {
 		margin-top: 20%;
 		height: 500px;
 		width: 650px;
@@ -108,8 +112,8 @@
 		font-size: 30px;
 		cursor: pointer;
 		position: relative;
-		left: 385px;
-		top: -605px;
+		left: 365px;
+		top: -560px;
 	}
 
 }
@@ -151,7 +155,8 @@
 
 	/*** OVERLAY ***/
 
-	#overlay img {
+	#overlay img,
+	#player {
 		margin-top: 10%;
 		height: 600px;
 		width: 850px;
@@ -186,7 +191,7 @@
 		cursor: pointer;
 		position: relative;
 		left: 490px;
-		top: -715px;
+		top: -680px;
 	}
 
 
