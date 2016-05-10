@@ -17,7 +17,7 @@ $search.keyup(function(){
 
 /************* OVERLAY **************/
 
-
+var $index = 0;
 var $overlay = $('<div id="overlay"></div>');
 var $image = $('<img>');
 var $caption = $('<p></p>');
@@ -39,15 +39,11 @@ function displayItem(anchor) {
   var href = $(anchor).attr('href');
 
   if ($(anchor).hasClass('photo')) {
-    $video.hide();
-    //update overlay with image linked in the clicked
-    $image.attr('src', href);
+    displayPhoto(href);
   }
 
   if ($(anchor).hasClass('video')) {
-    $image.hide();
-    $video.show();
-    $video.attr('src', href.replace('https://youtu.be', 'http://www.youtube.com/embed'));
+    displayVideo(href);
   }
   
   //show overlay
@@ -56,6 +52,18 @@ function displayItem(anchor) {
   //get child's alt attribute and set caption
   var captionText = $(anchor).children('img').attr('title');
   $caption.text(captionText);
+}
+
+function displayPhoto(href) {
+  $video.hide();
+  $image.show();
+  $image.attr('src', href);
+}
+
+function displayVideo(href) {
+  $image.hide();
+  $video.show();
+  $video.attr('src', href.replace('https://youtu.be', 'http://www.youtube.com/embed'));
 }
 
 function nextItem() {
@@ -84,6 +92,7 @@ function prevItem() {
 //click on thumbnail
 $('#gallery a').click(function (event) {
   event.preventDefault();
+  $index = $(this).parent().index();
   displayItem(this);
 });
 
@@ -100,9 +109,6 @@ var $exit = $('<button id="exit"> &#x2715; </button>');
 $overlay.append($exit);
 $overlay.append($leftArrow);
 $overlay.append($rightArrow);
-
-
-var $index = 0;
 
 
 $leftArrow.on('click', function(event){
