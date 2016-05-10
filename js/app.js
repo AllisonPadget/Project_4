@@ -6,7 +6,7 @@ $search.keyup(function(){
   var userInput = $(this).val().toLowerCase();
 
   $('#gallery img').each(function(){
-    var altText = $(this).attr('alt').toLowerCase();
+    var altText = $(this).attr('title').toLowerCase();
 
     if(altText.search(userInput) > -1){
       $(this).parent().parent().fadeIn();
