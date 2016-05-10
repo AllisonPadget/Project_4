@@ -4,8 +4,10 @@ var $search = $('input');
 
 $search.keyup(function(){
   var userInput = $(this).val().toLowerCase();
+
   $('#gallery img').each(function(){
     var altText = $(this).attr('alt').toLowerCase();
+
     if(altText.search(userInput) > -1){
       $(this).parent().parent().fadeIn();
     } else {
@@ -70,23 +72,23 @@ function nextItem() {
   $index++;
   /* loop up to first image in gallery */
   if ($index >= $('#gallery li').length) {
-      $index = 0;
-    }
-    /* use index to get next image */
-    var nextImage = $('#gallery li').get($index).getElementsByTagName('a');
-    displayItem(nextImage);
+    $index = 0;
+  }
+  /* use index to get next image */
+  var nextImage = $('#gallery li').get($index).getElementsByTagName('a');
+  displayItem(nextImage);
 }
 
 function prevItem() {
-    /* update the index */
-    $index--;
-    /* loop back to last image in gallery */
-    if ($index < 0) {
-        $index = $('#gallery li').length - 1;
-    }
-    /* get the previous image by index */
-    var prevImage = $('#gallery li').get($index).getElementsByTagName('a');
-    displayItem(prevImage);
+  /* update the index */
+  $index--;
+  /* loop back to last image in gallery */
+  if ($index < 0) {
+    $index = $('#gallery li').length - 1;
+  }
+  /* get the previous image by index */
+  var prevImage = $('#gallery li').get($index).getElementsByTagName('a');
+  displayItem(prevImage);
 }
 
 //click on thumbnail
