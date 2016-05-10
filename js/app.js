@@ -35,19 +35,16 @@ $overlay.append($caption);
 // add overlay
 $('body').append($overlay);
 
-//click on thumbnail
-$('#gallery a').click(function( event ){
-  event.preventDefault();
+function displayItem(anchor) {
+  var href = $(anchor).attr('href');
 
-  var href = $(this).attr('href');
-
-  if ($(this).hasClass('photo')) {
+  if ($(anchor).hasClass('photo')) {
     $video.hide();
     //update overlay with image linked in the clicked
     $image.attr('src', href);
   }
 
-  if ($(this).hasClass('video')) {
+  if ($(anchor).hasClass('video')) {
     $image.hide();
     $video.show();
     $video.attr('src', href.replace('https://youtu.be', 'http://www.youtube.com/embed'));
@@ -57,19 +54,38 @@ $('#gallery a').click(function( event ){
   $overlay.show();
   
   //get child's alt attribute and set caption
-  var captionText = $(this).children('img').attr('title');
+  var captionText = $(anchor).children('img').attr('title');
   $caption.text(captionText);
+}
+
+function nextItem() {
+  $index++;
+  /* loop up to first image in gallery */
+  if ($index >= $('#gallery li').length) {
+      $index = 0;
+    }
+    /* use index to get next image */
+    var nextImage = $('#gallery li').get($index).getElementsByTagName('a');
+    displayItem(nextImage);
+}
+
+function prevItem() {
+    /* update the index */
+    $index--;
+    /* loop back to last image in gallery */
+    if ($index < 0) {
+        $index = $('#gallery li').length - 1;
+    }
+    /* get the previous image by index */
+    var prevImage = $('#gallery li').get($index).getElementsByTagName('a');
+    displayItem(prevImage);
+}
+
+//click on thumbnail
+$('#gallery a').click(function (event) {
+  event.preventDefault();
+  displayItem(this);
 });
-
-
-/************** YouTube VIDEO **************/
-
-// var $video = $('<iframe frameborder="0" allowfullscreen> </iframe>');
-// $overlay.append($video);
-
-
-
-/***  https://youtu.be/_zR6ROjoOX0 ***/
 
 
 
@@ -90,61 +106,12 @@ var $index = 0;
 
 
 $leftArrow.on('click', function(event){
-  prevImage();
+  prevItem();
 });
 
 $rightArrow.on('click', function(event){
-  nextImage();
+  nextItem();
 });
-
-function nextImage() {
-  $index++;
-  /* loop up to first image in gallery */
-  if ($index >= $('#gallery li').length) {
-      $index = 0;
-    }
-    /* use index to get next image */
-    var nextImage = $('#gallery li').get($index).getElementsByTagName('a');
-    /* get new image location and caption */
-    var imageLocation = $(nextImage).attr('href');
-    var imageCaption =  $(nextImage).children('img').attr('title');
-    /* update overlay image */
-    updateImage(imageLocation, imageCaption);
-}
-
-function updateImage(imageLocation, imageCaption) {
-    /* update image source */
-    $image.attr("src", imageLocation);
-    // $video.attr('src', imageLocation);
-
-    /* set caption text */
-    $caption.text(imageCaption);
-}
-// function updateImage(imageLocation, imageCaption) {
-//     /* update video source */
-//     $video.attr("src", imageLocation);
-
-//     /* set caption text */
-//     $caption.text(imageCaption);
-// }
-
-function prevImage() {
-    /* update the index */
-    $index--;
-    /* loop back to last image in gallery */
-    if ($index < 0) {
-        $index = $('#gallery li').length - 1;
-    }
-    /* get the previous image by index */
-    var prevImage = $('#gallery li').get($index).getElementsByTagName('a');
-    /* update the image location and caption */
-    var imageLocation = $(prevImage).attr('href');
-    var imageCaption =  $(prevImage).children('img').attr('title');
-    /* update overlay */
-    updateImage(imageLocation, imageCaption);
-}
-
-
 
 
 /*** click EXIT to hide ***/
@@ -156,12 +123,16 @@ $exit.click(function(){
 
 /************** KEYBOARD NAVIGATION **************/
 
-$('body').keyup( function(e){
-  if(e.which == 37){
-    prevImage();
-  } else if (e.which == 39){
-    nextImage();
-  } else if (e.which == 32 || e.which == 27){
+var LEFT = 37;
+var RIGHT = 39;
+var ESC = 27;
+
+$('body').keyup(function (e) {
+  if(e.which == LEFT){
+    prevItem();
+  } else if (e.which == RIGHT){
+    nextItem();
+  } else if (e.which == ESC){
     $('#overlay').fadeOut(1000);
   }
 });
